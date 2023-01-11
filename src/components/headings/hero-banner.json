@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_headings_hero_banners",
+  "info": {
+    "displayName": "heroBanner"
+  },
+  "options": {},
+  "attributes": {
+    "background": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "landingText": {
+      "type": "richtext",
+      "default": "Type your introduction text",
+      "required": true
+    },
+    "callToAction": {
+      "type": "string",
+      "default": "Call to Action!",
+      "required": true
+    }
+  }
+}
