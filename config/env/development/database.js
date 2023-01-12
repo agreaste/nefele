@@ -2,7 +2,11 @@ module.exports = ({env}) => ({
   connection: {
     client: 'mysql',
     connection: {
-      host: env('PROD', false) ? `/cloudsql/${env('DB_INSTANCE_NAME')}` : env('DB_INSTANCE_NAME', 'localhost'),
+      ...(env('PROD', false) ? {
+        socketPath: `/cloudsql/${env('DB_INSTANCE_NAME')}`,
+      } : {
+        host: env('DATABASE_HOST', 'localhost'),
+      }),
       port: env.int('DATABASE_PORT', 3306),
       database: env('DATABASE_NAME', 'bit-db'),
       user: env('DATABASE_USERNAME', 'andreo'),
