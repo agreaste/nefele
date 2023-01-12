@@ -5,12 +5,11 @@ RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev l
 ARG NODE_ENV=development
 ENV NODE_ENV=${NODE_ENV}
 WORKDIR /opt/
-COPY ./package.json ./package-lock.json ./
+COPY ./package.json ./yarn.lock ./
 ENV PATH /opt/node_modules/.bin:$PATH
-RUN npm install
+RUN yarn install
 WORKDIR /opt/app
 COPY ./ .
-RUN npm run build
+RUN yarn build
 EXPOSE 1337
-CMD ["npm", "run", "develop"]
-
+CMD ["yarn", "develop"]
